@@ -1,6 +1,10 @@
 package br.com.digitalhouse;
 
-public class Principal {
+import java.util.Random;
+
+import static br.com.digitalhouse.DigitalException.matriculaDH;
+
+public class Principal extends DigitalException{
 
     public static void main(String[] args) {
 
@@ -62,6 +66,43 @@ public class Principal {
         //Exibição dos dados dos Cursos na Tela
         digitalHouse.imprimirCursos();
 
+        //Atualizar a média de notas de cada aluno
+        //Curso Android - 20002
+        digitalHouse.atualizarMediaNotaAluno(5051, 20002, 8.0f); //Ana
+        digitalHouse.atualizarMediaNotaAluno(5052, 20002, 5.5f); //Claudia
+        digitalHouse.atualizarMediaNotaAluno(5056, 20002, 8.0f); //Sergio
+
+        //Curso FullStack - 20001
+        digitalHouse.atualizarMediaNotaAluno(3001, 20001, 6.0f); //Renan
+        digitalHouse.atualizarMediaNotaAluno(3002, 20001, 7.5f); //Paulo
+
+        //Atualizar a media de notas de cada aluno
+        for (Curso linhaCurso: digitalHouse.getListaCursos()){
+
+            System.out.println("-> Curso: " + linhaCurso.getNome());
+
+            for (Aluno linhaAluno: linhaCurso.getListaAlunosMatriculados()){
+
+                Estudioso estudioso = (Aluno) linhaAluno;
+
+                System.out.println(
+                        "  - Aluno: " +
+                                linhaAluno.getNome() + " " +
+                                linhaAluno.getSobrenome());
+
+                try{
+
+                    DigitalException.matriculaDH(estudioso);
+
+                } catch (DHException ex){
+                    System.out.println("Vir ao co-learning");
+
+                } catch (OtherException ex){
+                    System.out.println("Falar com os alunos");
+
+                }
+            }
+        }
     }
 
 }

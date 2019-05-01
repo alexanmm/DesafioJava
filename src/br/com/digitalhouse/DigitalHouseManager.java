@@ -272,4 +272,24 @@ public class DigitalHouseManager {
             }
         }
     }
+
+    public void atualizarMediaNotaAluno(int codigoAluno, int codigoCurso, float mediaNota){
+
+        //Busca o curso correspondente
+        for (Curso linhaCurso: listaCursos){
+
+            if (linhaCurso.getCodigoCurso() == codigoCurso){
+
+                //Busca o Aluno correspondente ao Curso
+                for (Aluno linhaAluno: linhaCurso.getListaAlunosMatriculados()){
+
+                    if (linhaAluno.getCodigoAluno() == codigoAluno){
+                        linhaAluno.setMediaNotas(mediaNota);
+                    }
+                }
+            }
+        }
+    }
+
+
 }
