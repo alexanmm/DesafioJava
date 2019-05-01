@@ -34,8 +34,8 @@ public class Principal extends DigitalException{
         digitalHouse.registrarProfessorAdjunto("João", "Santos", 6002, 30);
 
         //Inicializar dois cursos
-        digitalHouse.registrarCurso("FullStack", 20001, 30);
-        digitalHouse.registrarCurso("Android", 20002, 15);
+        digitalHouse.registrarCurso("FullStack", 20001, 3);
+        digitalHouse.registrarCurso("Android", 20002, 2);
 
         //Alocar um professor titular e um adjunto para cada curso.
         digitalHouse.alocarProfessores(20001, 5002, 6001);
