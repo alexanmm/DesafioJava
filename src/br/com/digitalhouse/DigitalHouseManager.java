@@ -228,8 +228,8 @@ public class DigitalHouseManager {
             }
 
             //Encerra o loop ao encontrar os dois professores
-            if ((!(novoProfessorTitular == null))
-                    && (!(novoProfessorAdjunto == null))) {
+            if (    (novoProfessorTitular.getCodigoProfessor() != 0)
+                 && (novoProfessorAdjunto.getCodigoProfessor() != 0)) {
 
                 break Breaklooop;
             }
@@ -248,6 +248,27 @@ public class DigitalHouseManager {
 
                     break Breakloop_Curso;
                 }
+            }
+        }
+    }
+
+    public void imprimirCursos(){
+
+        System.out.println("-> Lista de Cursos: ");
+
+        for (Curso linhaCurso: listaCursos){
+            System.out.println(
+                    "  - Curso" + linhaCurso.getNome() +
+                    ", codigoCurso " + linhaCurso.getCodigoCurso() +
+                    ", professorTitular " + linhaCurso.getProfessorTitular() +
+                    ", professorAdjunto " + linhaCurso.getProfessorAdjunto() +
+                    ", qtdeMaximaAlunos " + linhaCurso.getQtdeMaximaAlunos());
+
+            System.out.println("    - Lista de Alunos do Curso: ");
+
+            for(Aluno linhaAluno: linhaCurso.getListaAlunosMatriculados()){
+                System.out.println("    - Aluno: " + linhaAluno.toString());
+
             }
         }
     }

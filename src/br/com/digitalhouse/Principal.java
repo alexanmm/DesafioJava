@@ -18,48 +18,49 @@ public class Principal {
         //5. Matricular dois alunos no curso de Full Stack.
         //6. Matricular três alunos no curso de Android.
 
+        //Incializar Digital House
+        DigitalHouseManager digitalHouse = new DigitalHouseManager();
+
         //Inicializar Professores Titulares
-        ProfessorTitular profTitularAlan = new ProfessorTitular("Carlos", "Silva", 10, 5001, "Java, Android");
-        ProfessorTitular profTitularCarlos = new ProfessorTitular("Carlos", "Mendes", 5, 4504, "Full Stack, .Net, Visual Basic");
+        digitalHouse.registrarProfessorTitular("Carlos", "Silva", 5001, "Java, Android");
+        digitalHouse.registrarProfessorTitular("Pablo", "Mendes", 5002, "Full Stack, .Net, Visual Basic");
 
         //Inicializar Professores Adjuntos
-        ProfessorAdjunto profAdjuntoElias = new ProfessorAdjunto("Elias", "Neto", 10, 5001, 40);
-        ProfessorAdjunto profAdjuntoJoao = new ProfessorAdjunto("João", "Santos", 5, 4504, 30);
+        digitalHouse.registrarProfessorAdjunto("Elias", "Neto", 6001, 40);
+        digitalHouse.registrarProfessorAdjunto("João", "Santos", 6002, 30);
 
         //Inicializar dois cursos
-        Curso cursoFullStack = new Curso("FrullStack", 20001, 3);
-        Curso cursoAndroid = new Curso("Android", 20002, 2);
+        digitalHouse.registrarCurso("FullStack", 20001, 30);
+        digitalHouse.registrarCurso("Android", 20002, 15);
 
         //Alocar um professor titular e um adjunto para cada curso.
-        cursoFullStack.setProfessorTitular(profTitularCarlos);
-        cursoFullStack.setProfessorAdjunto(profAdjuntoJoao);
+        digitalHouse.alocarProfessores(20001, 5002, 6001);
+        digitalHouse.alocarProfessores(20002, 5001, 6002);
 
-        cursoAndroid.setProfessorTitular(profTitularAlan);
-        cursoAndroid.setProfessorAdjunto(profAdjuntoElias);
+/*
+        digitalHouse.excluirCurso();
+        digitalHouse.excluirProfessor();
+*/
 
         //Matricular dois alunos no curso de Full Stack.
-        Aluno alunoRenan = new Aluno("Renan", "Pires", 3001);
-        Aluno alunoPaulo = new Aluno("Paulo", "Roberto", 3002);
+        digitalHouse.matricularAluno("Renan", "Pires", 3001);
+        digitalHouse.matricularAluno(3001, 20001);
 
-        cursoFullStack.adicionarUmAluno(alunoRenan);
-        cursoFullStack.adicionarUmAluno(alunoPaulo);
+        digitalHouse.matricularAluno("Paulo", "Roberto", 3002);
+        digitalHouse.matricularAluno(3002, 20001);
 
         //Matricular três alunos no curso de Android.
-        Aluno alunaAna = new Aluno("Ana", "Paula", 5051);
-        Aluno alunaClaudia = new Aluno("Claudia", "Maria", 5052);
-        Aluno alunoSergio = new Aluno("Sergio", "Brito", 5056);
+        digitalHouse.matricularAluno("Ana", "Paula", 5051);
+        digitalHouse.matricularAluno(5051, 20002);
 
-        cursoAndroid.adicionarUmAluno(alunaAna);
-        cursoAndroid.adicionarUmAluno(alunaClaudia);
-        cursoAndroid.adicionarUmAluno(alunoSergio);
+        digitalHouse.matricularAluno("Claudia", "Maria", 5052);
+        digitalHouse.matricularAluno(5052, 20002);
+
+        digitalHouse.matricularAluno("Sergio", "Brito", 5056);
+        digitalHouse.matricularAluno(5056, 20002);
 
         //Exibição dos dados dos Cursos na Tela
-        System.out.println(" -> Dados do curso Android: "
-                + "\n" + cursoAndroid.toString());
-
-        System.out.println(" -> Dados do curso Full Stack: "
-                + "\n" + cursoFullStack.toString());
-
+        digitalHouse.imprimirCursos();
 
     }
 
